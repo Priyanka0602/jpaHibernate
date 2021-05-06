@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
+import javax.persistence.Column;
 
 @Entity
 @Table(name = "users")
@@ -14,6 +15,7 @@ public class User {
     @GeneratedValue
     private long id;
 
+    @Column(name = "user_name")
    private String name;
 
    @Enumerated(EnumType.STRING)
