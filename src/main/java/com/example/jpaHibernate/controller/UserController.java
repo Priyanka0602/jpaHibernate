@@ -1,8 +1,9 @@
 package com.example.jpaHibernate.controller;
 
+import com.example.jpaHibernate.dao.Address;
 import com.example.jpaHibernate.dao.User;
+import com.example.jpaHibernate.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +18,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private AddressService addressService;
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUser(){
         return ResponseEntity.ok().body(userService.getAllUser());
@@ -24,5 +28,13 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         return ResponseEntity.ok().body(this.userService.createUser(user));
+    }
+    @GetMapping("/address")
+    public ResponseEntity<List<Address>> getAllAddress(){
+        return ResponseEntity.ok().body(addressService.getAllAddress());
+    }
+    @PostMapping("/address")
+    public ResponseEntity<Address> createUser(@RequestBody Address address){
+        return ResponseEntity.ok().body(this.addressService.createAddress(address));
     }
 }

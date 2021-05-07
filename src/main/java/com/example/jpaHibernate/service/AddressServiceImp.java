@@ -3,9 +3,13 @@ package com.example.jpaHibernate.service;
 import com.example.jpaHibernate.dao.Address;
 import com.example.jpaHibernate.repository.AddressRespository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
+@Service
 public class AddressServiceImp implements AddressService {
 
     @Autowired

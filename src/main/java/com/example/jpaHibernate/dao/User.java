@@ -7,6 +7,9 @@ import javax.persistence.Table;
 import javax.persistence.Enumerated;
 import javax.persistence.EnumType;
 import javax.persistence.Column;
+import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -21,10 +24,22 @@ public class User {
    @Enumerated(EnumType.STRING)
    private RoleEnum role;
 
+   @OneToMany(cascade = CascadeType.ALL)
+   private List<Address> address;
 
-    public User(String name, RoleEnum role) {
+
+    public User(String name, RoleEnum role,List<Address> address ) {
         this.name = name;
         this.role = role;
+        this.address = address;
+    }
+
+    public List<Address> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 
     public long getId() {
