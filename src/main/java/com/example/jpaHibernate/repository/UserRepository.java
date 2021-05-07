@@ -1,6 +1,6 @@
-package repository;
+package com.example.jpaHibernate.repository;
 
-import dao.User;
+import com.example.jpaHibernate.dao.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

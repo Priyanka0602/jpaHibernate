@@ -1,9 +1,9 @@
-package service;
+package com.example.jpaHibernate.service;
 
-import dao.User;
+import com.example.jpaHibernate.dao.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repository.UserRepository;
+import com.example.jpaHibernate.repository.UserRepository;
 
 import javax.transaction.Transactional;
 import java.util.List;

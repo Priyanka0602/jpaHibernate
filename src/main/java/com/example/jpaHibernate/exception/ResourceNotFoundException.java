@@ -1,4 +1,4 @@
-package exception;
+package com.example.jpaHibernate.exception;
 
 import org.springframework.web.bind.annotation.ResponseStatus;
 

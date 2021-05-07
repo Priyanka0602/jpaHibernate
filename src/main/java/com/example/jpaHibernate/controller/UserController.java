@@ -1,13 +1,14 @@
-package controller;
+package com.example.jpaHibernate.controller;
 
-import dao.User;
+import com.example.jpaHibernate.dao.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import service.UserService;
+import com.example.jpaHibernate.service.UserService;
 
 import java.util.List;
 
@@ -23,9 +24,5 @@ public class UserController {
     @PostMapping("/users")
     public ResponseEntity<User> createUser(@RequestBody User user){
         return ResponseEntity.ok().body(this.userService.createUser(user));
-    }
-    @GetMapping("/")
-    public String index() {
-        return "Greetings from Spring Boot!";
     }
 }

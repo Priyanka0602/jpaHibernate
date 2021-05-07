@@ -1,6 +1,6 @@
-package service;
+package com.example.jpaHibernate.service;
 
-import dao.User;
+import com.example.jpaHibernate.dao.User;
 
 import java.util.List;
 
