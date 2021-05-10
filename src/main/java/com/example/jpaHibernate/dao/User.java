@@ -1,15 +1,8 @@
 package com.example.jpaHibernate.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
-import javax.persistence.Column;
-import javax.persistence.OneToMany;
-import javax.persistence.CascadeType;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -24,15 +17,15 @@ public class User {
    @Enumerated(EnumType.STRING)
    private RoleEnum role;
 
-   @OneToMany(cascade = CascadeType.ALL)
+   @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+   //@JoinColumn( name = "user_ID")
    private List<Address> address;
 
-
-    public User(String name, RoleEnum role,List<Address> address ) {
-        this.name = name;
-        this.role = role;
-        this.address = address;
-    }
+   public User(String name, RoleEnum role,List<Address> address ) {
+    this.name = name;
+    this.role = role;
+    this.address = address;
+}
 
     public List<Address> getAddress() {
         return address;
@@ -41,6 +34,51 @@ public class User {
     public void setAddress(List<Address> address) {
         this.address = address;
     }
+
+//    public User(String name, RoleEnum role,Address address ) {
+//        this.name = name;
+//        this.role = role;
+//        this.address = address;
+//    }
+//    @OneToOne(cascade = CascadeType.ALL)
+    //@JoinColumn(name = "fk_adressId")
+//    @JoinTable(
+//            name = "user_add",
+//            joinColumns = { @JoinColumn( name="user_id")},
+//            inverseJoinColumns = { @JoinColumn( name="address_id")}
+//    )
+//    private Address address;
+//
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
+
+
+//    public User(String name, RoleEnum role, Set<Address> address) {
+//        this.name = name;
+//        this.role = role;
+//        this.address = address;
+//    }
+//
+//    @ManyToMany(cascade = CascadeType.ALL)
+//        @JoinTable(
+//            name = "user_add_manyTOmany",
+//            joinColumns = { @JoinColumn( name="user_fk")},
+//            inverseJoinColumns = { @JoinColumn( name="address_fk")}
+//    )
+//    private Set<Address> address;
+//
+//    public Set<Address> getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Set<Address> address) {
+//        this.address = address;
+//    }
 
     public long getId() {
         return id;

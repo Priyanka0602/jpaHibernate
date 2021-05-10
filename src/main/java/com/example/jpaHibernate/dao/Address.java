@@ -1,9 +1,7 @@
 package com.example.jpaHibernate.dao;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "address_book")
@@ -16,6 +14,43 @@ public class Address {
 
     String pincode;
 
+//    public Address(String city, String pincode) {
+//        this.city = city;
+//        this.pincode = pincode;
+//    }
+//
+//    public Address() {
+//
+//    }
+
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "user_id")
+//    private User user;
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+
+//    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "address")
+//    private Set<User> users;
+//
+//    public Set<User> getUsers() {
+//        return users;
+//    }
+//
+//    public void setUsers(Set<User> users) {
+//        this.users = users;
+//    }
+//
+//    public Address(String city, String pincode, Set<User> users) {
+//        this.city = city;
+//        this.pincode = pincode;
+//        this.users = users;
+//    }
 
     public long getId() {
         return id;
