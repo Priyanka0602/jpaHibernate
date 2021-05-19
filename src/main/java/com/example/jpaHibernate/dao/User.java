@@ -14,17 +14,24 @@ public class User {
    @Column(name = "name")
    private String name;
 
+   @Embedded
+   @AttributeOverrides(value = {
+           @AttributeOverride(name = "myNumber", column = @Column(name = "mobile_number")),
+   })
+   private Phone phone;
+
    @Enumerated(EnumType.STRING)
    private RoleEnum role;
 
-   @OneToMany(cascade = CascadeType.ALL,mappedBy = "user")
+   @OneToMany(cascade = CascadeType.ALL)
    //@JoinColumn( name = "user_ID")
    private List<Address> address;
 
-   public User(String name, RoleEnum role,List<Address> address ) {
+   public User(String name, RoleEnum role,Phone phone,List<Address> address ) {
     this.name = name;
     this.role = role;
     this.address = address;
+    this.phone=phone;
 }
 
     public List<Address> getAddress() {
@@ -102,6 +109,14 @@ public class User {
 
     public void setRole(RoleEnum role) {
         this.role = role;
+    }
+
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public void setPhone(Phone phone) {
+        this.phone = phone;
     }
 
     public User() {
