@@ -1,14 +1,13 @@
 package com.example.jpaHibernate.dao;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "address_book")
 public class Address {
     @Id
     @GeneratedValue
-    long id;
+    long address_id;
 
     String city;
 
@@ -23,10 +22,15 @@ public class Address {
 //
 //    }
 
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "user_id")
-//    private User user;
-//
+//     @OneToOne(mappedBy = "address", cascade = CascadeType.ALL)
+////   @OneToOne(cascade = CascadeType.ALL)
+//      private User user;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
 //    public User getUser() {
 //        return user;
 //    }
@@ -52,12 +56,12 @@ public class Address {
 //        this.users = users;
 //    }
 
-    public long getId() {
-        return id;
+    public long getAddress_id() {
+        return address_id;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setAddress_id(long id) {
+        this.address_id = id;
     }
 
     public String getCity() {
@@ -74,5 +78,13 @@ public class Address {
 
     public void setPincode(String pincode) {
         this.pincode = pincode;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

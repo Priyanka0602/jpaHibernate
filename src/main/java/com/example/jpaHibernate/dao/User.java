@@ -23,16 +23,15 @@ public class User {
    @Enumerated(EnumType.STRING)
    private RoleEnum role;
 
-   @OneToMany(cascade = CascadeType.ALL)
-   //@JoinColumn( name = "user_ID")
-   private List<Address> address;
+//   public User(String name, RoleEnum role,Phone phone,List<Address> address ) {
+//    this.name = name;
+//    this.role = role;
+//    this.address = address;
+//    this.phone=phone;
+//   }
 
-   public User(String name, RoleEnum role,Phone phone,List<Address> address ) {
-    this.name = name;
-    this.role = role;
-    this.address = address;
-    this.phone=phone;
-}
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL )
+    private List<Address> address;
 
     public List<Address> getAddress() {
         return address;
@@ -47,13 +46,16 @@ public class User {
 //        this.role = role;
 //        this.address = address;
 //    }
-//    @OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "fk_adressId")
+
+
+//    @JoinColumn(name = "fk_addressId")
 //    @JoinTable(
 //            name = "user_add",
 //            joinColumns = { @JoinColumn( name="user_id")},
 //            inverseJoinColumns = { @JoinColumn( name="address_id")}
 //    )
+//   @OneToOne(mappedBy = "user")
+//   @OneToOne(cascade = CascadeType.ALL)
 //    private Address address;
 //
 //    public Address getAddress() {
@@ -63,14 +65,14 @@ public class User {
 //    public void setAddress(Address address) {
 //        this.address = address;
 //    }
-
-
 //    public User(String name, RoleEnum role, Set<Address> address) {
 //        this.name = name;
 //        this.role = role;
 //        this.address = address;
 //    }
-//
+
+
+
 //    @ManyToMany(cascade = CascadeType.ALL)
 //        @JoinTable(
 //            name = "user_add_manyTOmany",
